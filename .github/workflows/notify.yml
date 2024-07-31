@@ -1,0 +1,18 @@
+name: Notify test_workflow_dispatch_target about new commit
+on:
+  push:
+    branches:
+      - main
+jobs:
+  dispatch-event:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/github-script@v6
+      with:
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: 's0nerik',
+            repo: 'test_workflow_dispatch_target',
+            workflow_id: 'main.yml',
+            ref: 'main'
+          })
