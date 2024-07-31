@@ -16,6 +16,6 @@ jobs:
           await github.rest.actions.createWorkflowDispatch({
             owner: 's0nerik',
             repo: 'test_workflow_dispatch_target',
-            workflow_id: 'main.yml',
+            workflow_id: 'generate_release.yml',
             ref: 'main'
           })
