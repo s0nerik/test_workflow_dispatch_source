@@ -17,5 +17,8 @@ jobs:
             owner: 's0nerik',
             repo: 'test_workflow_dispatch_target',
             workflow_id: 'generate_release.yml',
-            ref: 'main'
+            ref: 'main',
+            inputs: {
+              'commit_message': '${{ github.event.head_commit.message }}'
+            }
           })
