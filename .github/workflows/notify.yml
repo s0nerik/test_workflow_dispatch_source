@@ -10,6 +10,8 @@ jobs:
       actions: write
     steps:
     - uses: actions/github-script@v6
+      env:
+        COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
       with:
         github-token: ${{ secrets.DISPATCH_ACTION_PAT }}
         script: |
@@ -19,6 +21,6 @@ jobs:
             workflow_id: 'generate_release.yml',
             ref: 'main',
             inputs: {
-              'commit_message': '${{ github.event.head_commit.message }}'
+              'commit_message': process.env.COMMIT_MESSAGE
             }
           })
