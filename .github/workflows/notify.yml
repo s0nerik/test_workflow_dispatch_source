@@ -21,6 +21,7 @@ jobs:
             workflow_id: 'generate_release.yml',
             ref: 'main',
             inputs: {
-              'message': 'https://github.com/s0nerik/test_workflow_dispatch_source/commit/'+process.env.GITHUB_SHA+'\n\n'+process.env.COMMIT_MESSAGE
+              'commit_sha': process.env.GITHUB_SHA,
+              'commit_message': process.env.COMMIT_MESSAGE
             }
           })
